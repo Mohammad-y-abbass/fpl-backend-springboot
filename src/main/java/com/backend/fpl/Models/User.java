@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.GenerationType;
 
 
 
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(unique = true, nullable = false)
     private String username;

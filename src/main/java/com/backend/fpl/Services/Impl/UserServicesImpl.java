@@ -4,8 +4,11 @@ import com.backend.fpl.Services.IUserServices;
 import com.backend.fpl.Dtos.UserRegisterationDto;
 import com.backend.fpl.Models.User;
 import com.backend.fpl.Repositories.IUserRepository;
+import org.springframework.stereotype.Service;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@Service
 public class UserServicesImpl implements IUserServices {
 
     private final IUserRepository userRepository;
