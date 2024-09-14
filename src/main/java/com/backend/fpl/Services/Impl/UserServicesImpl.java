@@ -22,16 +22,13 @@ public class UserServicesImpl implements IUserServices {
 
     @Override
     public User registerUser(UserRegisterationDto registerationDto) {
+
         User user = new User();
 
-        if (userRepository.existsByUsername(registerationDto.getUsername())) {
+        if(userRepository.existsByUsername(registerationDto.getUsername()) || userRepository.existsByEmail(registerationDto.getEmail())) {
             throw new UserAlreadyExistException();
         }
-
-        if( userRepository.existsByEmail(registerationDto.getEmail())) {
-            throw new UserAlreadyExistException();
-        }
-
+    
         user.setUsername(registerationDto.getUsername());
         user.setEmail(registerationDto.getEmail());
         user.setPassword(passwordEncoder.encode(registerationDto.getPassword()));

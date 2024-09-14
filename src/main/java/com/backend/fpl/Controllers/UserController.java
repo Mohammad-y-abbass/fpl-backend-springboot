@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.backend.fpl.Dtos.UserRegisterationDto;
 import com.backend.fpl.Services.IUserServices;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class UserController {
 
@@ -17,8 +19,11 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestBody UserRegisterationDto registerationDto) {
+    public ResponseEntity<String> registerUser(@Valid @RequestBody UserRegisterationDto registerationDto) {
+       try {
         userServices.registerUser(registerationDto);
         return ResponseEntity.ok("User registered successfully");
-}
-}
+    } catch (Exception e) {
+        return ResponseEntity.badRequest().body("Failed to register user: " + e.getMessage());
+    }
+}}

@@ -1,5 +1,7 @@
 package com.backend.fpl.Response;
 
+import org.springframework.http.HttpStatus;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -8,5 +10,5 @@ import lombok.Data;
 public class CustomResponse {
 
 private String message;
-private int statusCode;
+private HttpStatus statusCode;
 }
